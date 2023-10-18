@@ -3,29 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Custom Select</title>
-<!-- JS date-time-select with custom ranges & horrible gradient-->
     <link rel="stylesheet" href="min-css.css">
 </head>
 <body>
-<section class="main">
-    <div class="main-container">
-        <div class="custom-ranges list-container">
-            <ul>
-                <li class="selected">Test</li>
-            </ul>
+<!-- JS date-time-select with custom ranges & horrible gradient-->
+<header>
+    <h1>Custom Ranges Select Vanilla JS Only Output: <span id="output"></span></h1>
+</header>
+<main>
+    <section class="settings-input">
+        <span>Scroll length:</span>
+        <input id="list-count" type="number" value="50" max="50" min="5">
+    </section>
+    <section class="main">
+        <div class="main-container">
+            <div class="wrapper">
+                <span id="span-range">Range</span>
+                <div class="default-size list-container" id="ranges-list-container">
+                    <ul id="custom-ranges">
+                    </ul>
+                </div>
+            </div>
+            <div class="wrapper">
+                <span id="span-size">Size</span>
+                <div class="default-size list-container" id="sizes-list-container">
+                    <ul id="custom-sizes">
+                    </ul>
+                </div>
+            </div>
+            <div class="wrapper">
+                <span id="span-select">Select</span>
+                <div class="default-size list-container" id="main-list-container">
+                    <ul id="main-list">
+                        <li id="test" class="selected"></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="custom-sizes list-container">
-            <ul>
-                <li class="selected">Test</li>
-            </ul>
-        </div>
-        <div class="default-size list-container" id="main-list-container">
-            <ul id="main-list">
-                <li id="test" class="selected"></li>
-            </ul>
-        </div>
-    </div>
-</section>
+    </section>
+</main>
+<footer class="footer">
+    <p class="credits">
+        By Toyless78
+        <a class="link" href="https://t.me/JATly">@JATly</a>
+    </p>
+</footer>
 <script type="module" src="index.js"></script>
 </body>
 </html>
