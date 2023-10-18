@@ -39,12 +39,12 @@ renderOptimize(updateSelect);
 const range = document.createRange();
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-        if (entry.target === watchStart) {
+        if (!entry.isIntersecting || listCount <= 0) {
+            return;
+        } else if (entry.target === watchStart) {
             scrollUp();
         } else if (entry.target === watchEnd) {
             scrollDown();
-        } else if (!entry.isIntersecting || listCount <= 0) {
-            return;
         }
     });
 });
