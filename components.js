@@ -1,3 +1,7 @@
+/*
+Overview
+This code exports a set of functions and objects related to date and time manipulation. It includes functions for rendering selectable options for date ranges and sizes, as well as functions for date and time formatting.
+*/
 export {
     customSize,
     customRanges,
@@ -7,6 +11,12 @@ export {
     renderSizesSelect}
 
 // Exported reused functions:
+
+/*
+Description: This function provides an optimized rendering mechanism for animations by utilizing the requestAnimationFrame API.
+Parameters:
+animate: A function that contains the animation logic to be executed.
+ */
 function renderOptimize(animate) {
     let start = null;
     function step(timestamp) {
@@ -20,6 +30,13 @@ function renderOptimize(animate) {
     }
     requestAnimationFrame(step);
 }
+
+/*
+Description: Renders a list of selectable date ranges.
+Parameters:
+customRangesSelect: The DOM element to which the ranges will be appended.
+options: An object containing information about the selected option.
+ */
 function renderRangesSelect(customRangesSelect, options) {
     const rangesFragment = document.createDocumentFragment();
     let i = 1;
@@ -38,6 +55,13 @@ function renderRangesSelect(customRangesSelect, options) {
     customRangesSelect.append(rangesFragment);
     customRangesSelect.querySelector('.selected').scrollIntoView();
 }
+
+/*
+Description: Renders a list of selectable sizes.
+Parameters:
+customSizesSelect: The DOM element to which the sizes will be appended.
+options: An object containing information about the selected option.
+ */
 function renderSizesSelect(customSizesSelect, options) {
     const fragment = document.createDocumentFragment();
     let i = 1;
@@ -58,6 +82,10 @@ function renderSizesSelect(customSizesSelect, options) {
 }
 
 // Default settings objects:
+
+/*
+Description: An object containing predefined size options with associated properties (e.g., beforeCount, afterCount, size, textContent).
+ */
 const customSize = {
     size3x6:  {
         beforeCount: 3,
@@ -78,6 +106,10 @@ const customSize = {
         textContent: 'Before 0, After 6',
     }
 };
+
+/*
+Description: An object containing predefined date range options with associated properties (e.g., timeRange, timeStep, formatCount, textContent, value).
+ */
 const customRanges = {
     minutes7:  {
         timeRange: 'minutes',
@@ -153,6 +185,13 @@ const customRanges = {
 
 
 // Date and Time settings for Vanilla JS:
+
+/* Date and Time Formatting
+The code also defines several formatting objects for date and time:
+
+dateFormatLong: A long date format.
+timeFormat: A format for displaying time.
+dateFormat: A format for displaying dates.*/
 const dateFormatLong = new Intl.DateTimeFormat("en-gb", {
     "timeZone": "Europe/Kyiv",
     "day": "numeric",
@@ -172,6 +211,14 @@ const dateFormat = new Intl.DateTimeFormat("en-gb",
         "day": "numeric",
         "month": "long"});
 
+
+/*
+Description: Calculates a new date or time based on a specified step and type (e.g., days, weeks, months, hours, minutes).
+Parameters:
+step: The amount by which the date or time will be adjusted.
+dateType: The type of adjustment (e.g., 'days', 'weeks', 'months', 'hours', 'minutes').
+result (optional): The starting date or time. Defaults to the current date and time.
+ */
 function getDateOrTimeByStep(step, dateType, result = new Date()) {
     switch (dateType) {
         case 'days':
