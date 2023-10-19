@@ -1,3 +1,7 @@
+/*
+Introduction:
+JavaScript program that manipulates and interacts with a list of elements in a web page. It uses various event listeners and functions to handle user interactions and update the list dynamically. Below is a detailed documentation of the code*/
+
 import {
     customSize,
     customRanges,
@@ -21,22 +25,38 @@ const mainList = document.getElementById("main-list"),
     countInput = document.getElementById('list-count');
 
 // JS Variables:
+/*
+containersArray: An array containing references to the containers for ranges, sizes, and the main list.
+watchStart, watchEnd: Variables for tracking the start and end elements in the list.
+listCount: Tracks the current count of items in the list.
+result: Stores the result of a function call.
+indexChild: Stores the index of the selected item in the list.
+options: An object used to store various options.
+index: A counter variable.
+*/
+
 const containersArray = [rangesListContainer, sizesListContainer, mainListContainer];
 
 let watchStart, watchEnd, listCount, result, indexChild = 0, options = {}, index = 0;
 
 // Default settings:
+/*Sets default options for custom ranges and sizes.*/
 setCustomOptions(customRanges.day);
 setCustomOptions(customSize.size3x6);
 
 // Default render:
+/*Renders select elements and optimizes rendering for better performance.*/
 renderSizesSelect(customSizesSelect, options);
 renderRangesSelect(customRangesSelect, options);
 renderOptimize(preventSelectRender);
 renderOptimize(updateSelect);
 
 // Implementation Range and IntersectionObserver:
+
+/*Creates a range object for manipulating the document's content.*/
 const range = document.createRange();
+
+/*Initializes an IntersectionObserver to monitor elements' visibility.*/
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (!entry.isIntersecting || listCount <= 0) {
@@ -50,6 +70,7 @@ const observer = new IntersectionObserver(entries => {
 });
 
 // Configuring Event Listeners:
+/*These event listeners respond to user interactions with the custom sizes and ranges select elements, as well as the main list.*/
 customSizesSelect.addEventListener('click', (e) => {
     if (sizesListContainer.classList.contains('default-size')) {
         unusedClose();
@@ -97,6 +118,9 @@ mainList.addEventListener('click', (e) => {
 })
 
 // Dependent Function Block:
+/*This block contains various functions used by the event listeners and other parts of the program.*/
+
+// Closes containers that are not currently in use
 function unusedClose() {
     containersArray.forEach((el, index) => {
         if (!el.classList.contains('default-size')) {
@@ -105,6 +129,7 @@ function unusedClose() {
     })
 }
 
+// Closes a specific container based on the provided index
 function switchClose(x) {
     switch (x) {
         case 0:
@@ -122,10 +147,12 @@ function switchClose(x) {
     }
 }
 
+// Sets custom options based on the provided value
 function setCustomOptions(value) {
     options = Object.assign(options, value);
 }
 
+// Renders and updates the select element
 function preventSelectRender() {
     result = getDateOrTimeByStep(0, options.timeRange)
     mainList.querySelector('.selected').id = `${result[0]}`;
@@ -133,6 +160,7 @@ function preventSelectRender() {
     output.textContent = `${result[options.formatCount]}`;
 }
 
+// Adds block of items to the end of the list
 function addItemsToEnd() {
     const fragment = document.createDocumentFragment();
 
@@ -150,6 +178,7 @@ function addItemsToEnd() {
     mainList.append(fragment);
 }
 
+// Adds 1 item after the last child of the list
 function addItemAfter() {
     const fragment = document.createDocumentFragment();
     const item = document.createElement("li");
@@ -161,6 +190,7 @@ function addItemAfter() {
     mainList.append(fragment);
 }
 
+// Adds block of items to the start of the list
 function addItemsToStart() {
     const fragment = document.createDocumentFragment();
 
@@ -179,6 +209,7 @@ function addItemsToStart() {
     mainList.prepend(fragment);
 }
 
+// Adds 1 item before the first child of the list
 function addItemBefore() {
     const fragment = document.createDocumentFragment();
     const item = document.createElement("li");
@@ -192,6 +223,7 @@ function addItemBefore() {
     index++;
 }
 
+// Updates the select element based on the current list state
 function updateSelect() {
     if (mainList.querySelectorAll('li').length > 1) {
         sliceList();
@@ -208,6 +240,7 @@ function updateSelect() {
     }
 }
 
+// Scrolls up in the list
 function scrollUp() {
     addItemBefore();
     watchStart = mainList.firstChild;
@@ -215,6 +248,7 @@ function scrollUp() {
     listCount--;
 }
 
+// Scrolls down in the list
 function scrollDown() {
     addItemAfter();
     watchEnd = mainList.lastChild;
@@ -222,6 +256,7 @@ function scrollDown() {
     listCount--;
 }
 
+// Opens the select element.
 function openSelect() {
     if (mainList.children[indexChild - options.beforeCount]) {
         mainList.children[indexChild - options.beforeCount].scrollIntoView();
@@ -231,6 +266,7 @@ function openSelect() {
     spanSelect.classList.add(options.size);
 }
 
+// Opens the ranges list container
 function openRanges() {
     const count = customRangesSelect.querySelectorAll('.before').length;
     const classCount = 'custom-ranges-' + count;
@@ -238,6 +274,7 @@ function openRanges() {
     spanRange.classList.add(classCount);
 }
 
+// Opens the sizes list container
 function openSizes() {
     const count = customSizesSelect.querySelectorAll('.before').length;
     const classCount = 'custom-sizes-' + count;
@@ -245,6 +282,7 @@ function openSizes() {
     spanSize.classList.add(classCount);
 }
 
+// Closes the select element
 function closeSelect() {
     if (mainList.children[indexChild - options.beforeCount]) {
         mainList.children[indexChild - options.beforeCount].scrollIntoView();
@@ -253,6 +291,7 @@ function closeSelect() {
     spanSelect.classList.remove(options.size);
 }
 
+// loses the ranges list container
 function closeRanges() {
     rangesListContainer.className = 'default-size list-container';
     spanRange.className = '';
@@ -273,6 +312,7 @@ function closeRanges() {
     })();
 }
 
+// Closes the sizes list container
 function closeSizes() {
     sizesListContainer.className = 'default-size list-container';
     spanSize.className = '';
@@ -293,6 +333,7 @@ function closeSizes() {
     })()
 }
 
+// Slices the list based on the selected item
 function sliceList() {
     listCount = countInput.value;
     range.setStartBefore(mainList.firstChild);
@@ -303,4 +344,6 @@ function sliceList() {
     range.deleteContents();
 }
 
+/* Conclusion:
 
+* This code provides a detailed set of functionalities for manipulating and interacting with a list in a web page. It utilizes event listeners and functions to handle user interactions and dynamically update the list. The provided documentation gives an overview of the code's structure, variables, functions, and their purposes.*/
