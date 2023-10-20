@@ -5,8 +5,6 @@
         box-sizing: border-box;
     }
     html {
-        height: 100%;
-        background: linear-gradient(172deg, rgba(194, 255, 172, 1) 0%, rgba(20, 255, 248, 1) 100%);
         font-family: sans-serif;
         font-size: 14px;
     }
@@ -46,13 +44,6 @@
         padding-top: 10px;
         display: flex;
         align-items: start;
-        justify-content: center;
-    }
-    .main {
-        height: calc(100vh - 42px * 3);
-        width: 100vw;
-        display: flex;
-        align-items: center;
         justify-content: center;
     }
     .main-container {
