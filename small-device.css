@@ -183,11 +183,11 @@
         text-decoration: none;
         font-style: italic;
     }
-    li::-moz-selection {
+    ::-moz-selection {
         background: transparent;
     }
 
-    li::selection {
+    ::selection {
         background: transparent;
     }
 }
