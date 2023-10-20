@@ -240,4 +240,11 @@ ul {
     text-decoration: none;
     font-style: italic;
 }
+li::-moz-selection {
+        background: transparent;
+    }
+
+    li::selection {
+        background: transparent;
+    }
 
