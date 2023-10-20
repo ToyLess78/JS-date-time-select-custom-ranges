@@ -53,7 +53,6 @@ input {
 .main-container {
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
     gap: 40px 40px;
     align-items: start;
     justify-content: space-around;
