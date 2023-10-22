@@ -8,6 +8,8 @@ https://github.com/ToyLess78/JS-date-time-select-custom-ranges/assets/121128928/
 
 This code is an implementation of a custom select menu using HTML, CSS, and Vanilla JavaScript. It provides a user interface for selecting options from predefined ranges and sizes.
 
+[GitHub Pages](https://toyless78.github.io/JS-date-time-select-custom-ranges/)
+
 ## Table of Contents
 
 - [Getting Started](#getting-started)
