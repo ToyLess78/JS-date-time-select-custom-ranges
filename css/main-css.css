@@ -17,7 +17,7 @@ html {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e0e0e0', endColorstr='#cccccc',GradientType=1 ); /* IE6-9 */
 }
 body {
-    background-image: url("/svg/bg.svg"), url("/svg/bg-2.svg");
+    background-image: url("/JS-date-time-select-custom-ranges/svg/bg.svg"), url("/JS-date-time-select-custom-ranges/svg/bg-2.svg");
     background-size: 100%, 70%;
     background-repeat: no-repeat, no-repeat;
     background-position: bottom, top left;
