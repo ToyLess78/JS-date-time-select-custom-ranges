@@ -140,7 +140,10 @@ span {
     font-size: 1.1rem;
     display: block;
     padding-bottom: 10px;
-    transition: height 0.5s ease-in, transform 0.5s ease-in-out;
+    -webkit-transition-property: all;
+    -webkit-transition-duration: 0.5s;
+    -webkit-transition-timing-function: ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 .list-container {
@@ -291,7 +294,9 @@ span {
 .size3x3 .selected {
     background-color: #ff9130;
     color: #f7f7f8;
-    transition: all 0.5s ease;
+    -webkit-transition-property: all;
+    -webkit-transition-duration: 0.5s;
+    -webkit-transition-timing-function: ease-in-out;
 }
 
 #output {
@@ -445,4 +450,3 @@ li::selection {
         opacity: 1;
     }
 }
-
